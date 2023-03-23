@@ -9,19 +9,14 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import '@/styles/globals.scss'
+import { NextSeo } from 'next-seo'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient())
 
   return (
     <>
-      <Head>
-        <title>Test</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-      </Head>
+      <NextSeo title="MSDavid - Evelan GmbH" />
       <QueryClientProvider client={queryClient}>
         {/* Used for React Query SSR Hydration */}
         <Hydrate state={pageProps.dehydratedState}>

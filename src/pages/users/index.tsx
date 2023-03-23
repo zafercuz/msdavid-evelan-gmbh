@@ -1,5 +1,6 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
+import { NextSeo } from 'next-seo'
 
 import UserCard from './components/UserCard'
 import { getListUsers } from '@/src/queries/users/api'
@@ -22,8 +23,8 @@ const Users = () => {
       })
 
       // Append the data to users array
-      const newUsers = data?.data
-      setUsers((existingData) => [...(existingData ?? []), ...(newUsers ?? [])])
+      const newUsers = data?.data ?? []
+      setUsers((existingData) => [...(existingData ?? []), ...newUsers])
 
       // Check if there's more data, if no more data then disable button
       if (data?.total_pages === page) setDisabled(true)
@@ -35,24 +36,30 @@ const Users = () => {
   }, [page])
 
   return (
-    <div className="container mx-auto flex flex-col items-center justify-center h-full py-4">
-      <h1 className="mb-24">MSDavid - Evelan GmbH</h1>
-      <h2 className="mb-10">Users List</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6 mx-4">
-        {(data?.total ?? 0) > 0 ? (
-          users?.map((user) => <UserCard key={user.id} user={user} />)
-        ) : (
-          <div>No Data Found</div>
-        )}
+    <>
+      <NextSeo
+        title="Evelan GmbH - Users List"
+        description="Users List page where it calls user data from a fake mock API"
+      />
+      <div className="container mx-auto flex flex-col items-center justify-center h-full py-4">
+        <h1 className="mb-24">MSDavid - Evelan GmbH</h1>
+        <h2 className="mb-10">Users List</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6 mx-4">
+          {(data?.total ?? 0) > 0 ? (
+            users?.map((user) => <UserCard key={user.id} user={user} />)
+          ) : (
+            <div>No Data Found</div>
+          )}
+        </div>
+        <button
+          className="mt-4"
+          onClick={() => setPage(page + 1)}
+          disabled={isFetching || disable}
+        >
+          Load More
+        </button>
       </div>
-      <button
-        className="mt-4"
-        onClick={() => setPage(page + 1)}
-        disabled={isFetching || disable}
-      >
-        Load More
-      </button>
-    </div>
+    </>
   )
 }
 

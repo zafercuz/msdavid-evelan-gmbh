@@ -9,7 +9,6 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import '@/styles/globals.scss'
-import { NextSeo } from 'next-seo'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient())

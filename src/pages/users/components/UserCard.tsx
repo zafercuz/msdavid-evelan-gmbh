@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const User = () => {
+const UserCard = () => {
   return (
     <div className="p-4 shadow">
       <div className="flex flex-col items-center justify-center">
@@ -19,4 +19,4 @@ const User = () => {
   )
 }
 
-export default User
+export default UserCard

@@ -1,6 +1,7 @@
 import { InferGetStaticPropsType } from 'next'
 
-import User from './components/User'
+import UserCard from './components/UserCard'
+import { type User } from '@/src/types/user'
 
 const Users = ({ users }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -8,12 +9,12 @@ const Users = ({ users }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <h1 className="mb-24">Evelan GmbH</h1>
       <h2 className="mb-10">Users List</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6 mx-4">
-        <User />
-        <User />
-        <User />
-        <User />
-        <User />
-        <User />
+        {/* <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard /> */}
       </div>
       <button className="mt-4">Load More</button>
     </div>
@@ -22,15 +23,9 @@ const Users = ({ users }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Users
 
-type User = {
-  id: number
-  name: string
-}
-
 export const getStaticProps = async () => {
-  // const res = await fetch('https://.../posts')
-  // const posts: Post[] = await res.json()
   const users: User[] = []
+  console.log('get static proopss')
 
   return {
     props: {

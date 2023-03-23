@@ -6,10 +6,6 @@ export default function Document() {
       <Head>
         <meta charSet="UTF-8" />
         <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-        <meta
           name="description"
           content="Evelan gmbH NextJS & TypeScript assessment exam"
         />

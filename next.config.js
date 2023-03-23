@@ -4,12 +4,11 @@ const nextConfig = {
   images: {
     domains: ['reqres.in'],
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/',
         destination: '/users',
-        permanent: true,
       },
     ]
   },

@@ -5,9 +5,9 @@ type Support = {
 
 type Meta = {
   page: number
-  perPage: number
+  per_page: number
   total: number
-  totalPages: number
+  total_pages: number
   support: Support
 }
 
